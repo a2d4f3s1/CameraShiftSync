@@ -1,0 +1,13 @@
+schema_version = "1.0.0"
+
+id = "camera_shift_sync"
+version = "0.2.0"
+name = "Camera Shift Sync"
+tagline = "Compose-preserving camera moves around a world-fixed target"
+maintainer = "Camera Shift Sync Authors"
+type = "add-on"
+
+tags = ["Camera"]
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+copyright = ["2026 Camera Shift Sync Authors"]

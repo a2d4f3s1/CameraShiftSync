@@ -1,0 +1,29 @@
+# Allowlist mode: ignore everything by default at the project root.
+# Only the addon body and standard public-facing files are tracked.
+# Everything else (reference/, docs/, tools/, .claude/, dist/, *.client etc.)
+# stays local but never reaches GitHub.
+
+# Default: ignore everything at the project root
+/*
+
+# Explicitly track these
+!/.gitignore
+!/README.md
+!/CHANGELOG.md
+!/LICENSE
+!/camera_shift_sync/
+
+# Safety-net patterns that apply inside tracked directories too
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/*.so
+**/.Python
+**/*.egg-info/
+**/.eggs/
+**/.DS_Store
+**/Thumbs.db
+**/desktop.ini
+**/*.blend1
+**/*.blend2
+**/*.blend@
