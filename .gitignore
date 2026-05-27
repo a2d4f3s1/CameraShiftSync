@@ -13,6 +13,17 @@
 !/LICENSE
 !/camera_shift_sync/
 
+# README で参照する画像だけ docs/ 直下から allowlist で公開する。
+# docs/ 内の設計ドキュメント (md) や動画 (mp4) 等は引き続き track 外。
+!/docs/
+/docs/*
+!/docs/*.png
+!/docs/*.jpg
+!/docs/*.jpeg
+!/docs/*.gif
+!/docs/*.svg
+!/docs/*.webp
+
 # Safety-net patterns that apply inside tracked directories too
 **/__pycache__/
 **/*.py[cod]

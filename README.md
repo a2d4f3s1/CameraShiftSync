@@ -2,6 +2,8 @@
 
 Blender 4.2 以降向けの透視カメラアドオン。ワールド固定の D 平面を不変ターゲットとして、カメラを動かしながら `shift_x` / `shift_y` を自動連動させ、画角中心を常にターゲットに乗せ続ける「構図保持移動」を N-Panel から提供します。
 
+<img src="docs/UI_001.png" alt="N-Panel UI" width="185">
+
 ## 特徴
 
 - **D 平面ターゲット**: 任意の被写体面に Initialize すると、その平面の中心 T を世界座標で固定したまま、カメラだけを動かす操作モードに入ります
@@ -25,6 +27,8 @@ Blender 4.2 以降向けの透視カメラアドオン。ワールド固定の D
 2. Blender を起動し、`Edit > Preferences > Add-ons > Install from Disk...` から ZIP を選択
 3. 有効化（チェックボックス）
 4. 3D ビューポートの N-Panel に `Camera Shift Sync` タブが追加されます（タブ名は AddonPreferences の `Category (N-Panel)` で変更可能）
+
+<img src="docs/Preferences.png" alt="AddonPreferences" width="364">
 
 ## 基本操作
 
