@@ -6,6 +6,8 @@ Camera Shift Sync の変更履歴です。
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-29
+
 ### Added
 
 - AddonPreferences の `Category (N-Panel)` フィールドに、デフォルト値 `CameraShift` へ戻すリセットボタン（`LOOP_BACK` アイコン）を追加
