@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/834b2026-f58a-4dc2-b204-385a57ef0a70
 3. 有効化（チェックボックス）
 4. 3D ビューポートの N-Panel に `Camera Shift Sync` タブが追加されます（タブ名は AddonPreferences の `Category (N-Panel)` で変更可能）
 
-<img src="docs/Preferences.png" alt="AddonPreferences" width="364">
+<img src="docs/Preferences.png" alt="AddonPreferences" width="299">
 
 ## 基本操作
 

@@ -6,6 +6,10 @@ Camera Shift Sync の変更履歴です。
 
 ## [Unreleased]
 
+### Added
+
+- AddonPreferences の `Category (N-Panel)` フィールドに、デフォルト値 `CameraShift` へ戻すリセットボタン（`LOOP_BACK` アイコン）を追加
+
 ## [0.2.0] - 2026-05-27
 
 機能 A end-to-end 実装。ワールド固定の D 平面ターゲットを軸にカメラを動かすと `shift_x` / `shift_y` が自動連動し、画角中心が常にターゲットに乗り続ける「構図保持移動」を N-Panel から提供する。透視カメラ限定（`Camera.type == 'PERSP'`）。

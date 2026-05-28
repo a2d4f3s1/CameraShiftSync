@@ -13,9 +13,11 @@ from typing import Callable, Optional
 
 import bpy
 from bpy.props import BoolProperty, FloatProperty, FloatVectorProperty, StringProperty
-from bpy.types import AddonPreferences
+from bpy.types import AddonPreferences, Operator
 
 ADDON_ID = __package__
+
+DEFAULT_PANEL_CATEGORY = "CameraShift"
 
 _on_category_change: Optional[Callable[[str], None]] = None
 
@@ -25,13 +27,25 @@ def _category_update(self, context):
         _on_category_change(self.panel_category)
 
 
+class CSS_OT_reset_panel_category(Operator):
+    """Reset panel category to default"""
+    bl_idname = "css.reset_panel_category"
+    bl_label = "Reset to Default"
+    bl_options = {'REGISTER', 'INTERNAL'}
+
+    def execute(self, context):
+        prefs = context.preferences.addons[ADDON_ID].preferences
+        prefs.panel_category = DEFAULT_PANEL_CATEGORY
+        return {'FINISHED'}
+
+
 class CSS_AddonPreferences(AddonPreferences):
     bl_idname = ADDON_ID
 
     panel_category: StringProperty(
         name="Category (N-Panel)",
         description="Tab category in the N-panel sidebar (bl_category)",
-        default="CameraShift",
+        default=DEFAULT_PANEL_CATEGORY,
         update=_category_update,
     )
 
@@ -78,7 +92,15 @@ class CSS_AddonPreferences(AddonPreferences):
 
         box = layout.box()
         box.label(text="General")
-        box.prop(self, "panel_category")
+        split = box.split(factor=0.3, align=True)
+        split.label(text="Category (N-Panel)")
+        row = split.row(align=True)
+        row.prop(self, "panel_category", text="")
+        row.operator(
+            CSS_OT_reset_panel_category.bl_idname,
+            text="",
+            icon='LOOP_BACK',
+        )
 
         box = layout.box()
         box.label(text="Plate Defaults (applied on D Plane init / Reset Plate)")
@@ -108,15 +130,23 @@ def apply_plate_defaults(settings) -> None:
     settings.plate_edge_width = prefs.default_plate_edge_width
 
 
+_classes = (
+    CSS_OT_reset_panel_category,
+    CSS_AddonPreferences,
+)
+
+
 def register(
     on_category_change: Optional[Callable[[str], None]] = None,
 ) -> None:
     global _on_category_change
     _on_category_change = on_category_change
-    bpy.utils.register_class(CSS_AddonPreferences)
+    for cls in _classes:
+        bpy.utils.register_class(cls)
 
 
 def unregister() -> None:
     global _on_category_change
-    bpy.utils.unregister_class(CSS_AddonPreferences)
+    for cls in reversed(_classes):
+        bpy.utils.unregister_class(cls)
     _on_category_change = None
